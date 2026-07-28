@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --app-bg: #f4f7fb;
+  --app-surface: #f4f7fb;
+  --app-surface-soft: #f4f7fb;
+  --app-surface-raised: #f4f7fb;
+  --app-border: #dbe4ef;
+  --app-border-soft: rgba(148, 163, 184, 0.28);
+  --app-text: #111827;
+  --app-muted: #64748b;
+  --app-faint: #94a3b8;
+  --app-primary: #15803d;
+  --app-primary-strong: #166534;
+  --app-primary-soft: #ecfdf5;
+  --app-blue-soft: #eff6ff;
+  --app-danger-soft: #fff1f2;
+  --app-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+  --app-shadow-soft: 0 8px 22px rgba(15, 23, 42, 0.06);
+  
+  /* Enforcing Manrope as the default root variables standard */
+  --font-primary: "Manrope", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  
+  font-family: var(--font-primary);
+  color: var(--app-text);
+  background: var(--app-bg);
+}
+
+:root[data-theme="dark"] {
+  --app-bg: #070b14;
+  --app-surface: #0f172a;
+  --app-surface-soft: #111827;
+  --app-surface-raised: #172033;
+  --app-border: #263449;
+  --app-border-soft: rgba(148, 163, 184, 0.18);
+  --app-text: #f8fafc;
+  --app-muted: #cbd5e1;
+  --app-faint: #94a3b8;
+  --app-primary: #22c55e;
+  --app-primary-strong: #16a34a;
+  --app-primary-soft: rgba(34, 197, 94, 0.12);
+  --app-blue-soft: rgba(59, 130, 246, 0.13);
+  --app-danger-soft: rgba(127, 29, 29, 0.22);
+  --app-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+  --app-shadow-soft: 0 12px 28px rgba(0, 0, 0, 0.28);
+  color-scheme: dark;
+}
+
+/* 💥 GLOBAL RESET: Affects absolutely every element, tag, pseudo-element, and class */
+*,
+*::before,
+*::after,
+html,
+body,
+#root {
+  font-family: var(--font-primary) !important;
+  box-sizing: border-box;
+}
+
+html, body {
+  background: var(--app-bg);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  letter-spacing: -0.01em;
+  color: var(--app-text);
+  background: var(--app-bg);
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 🎯 DISPLAY ENGINE OVERRIDE: Forces Space Grotesk on all titles, navigation components, metrics and headers */
+h1, h2, h3, h4, h5, h6,
+h1 *, h2 *, h3 *, h4 *, h5 *, h6 *,
+.font-heading,
+[class*="font-bold"],
+[class*="font-extrabold"],
+[class*="font-black"],
+[class*="tracking-widest"],
+[class*="tracking-wider"],
+thead th,
+.sidebar-logo,
+.nav-link {
+  font-family: var(--font-display) !important;
+}
+
+/* 📝 FORM FIELD ENFORCEMENT */
+button,
+select,
+input,
+textarea,
+button *,
+select *,
+input *,
+textarea * {
+  font-family: var(--font-primary) !important;
+}
+
+button {
+  cursor: pointer;
+  letter-spacing: -0.005em;
+  transform: translateZ(0);
+  transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+button:focus-visible,
+select:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(34, 197, 94, 0.26);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: rgba(34, 197, 94, 0.22);
+}
+
+/* Professional system surface treatment */
+[class*="bg-[#f8fafc]"],
+[class*="bg-[#f1f5f9]"],
+[class*="bg-slate-50"],
+[class*="bg-white"] {
+  background-color: var(--app-surface) !important;
+}
+
+[class*="bg-[#f1f5f9]"] {
+  background-color: var(--app-surface-soft) !important;
+}
+
+[class*="bg-neutral-100"],
+[class*="bg-[#eff6ff]"] {
+  background-color: var(--app-blue-soft) !important;
+}
+
+[class*="border-[#e2e8f0]"],
+[class*="border-[#cbd5e1]"],
+[class*="border-[#f1f5f9]"] {
+  border-color: var(--app-border) !important;
+}
+
+[class*="text-[#0f172a]"],
+[class*="text-[#334155]"] {
+  color: var(--app-text) !important;
+}
+
+[class*="text-[#475569]"],
+[class*="text-[#64748b]"] {
+  color: var(--app-muted) !important;
+}
+
+[class*="text-[#94a3b8]"] {
+  color: var(--app-faint) !important;
+}
+
+[class*="shadow-sm"],
+[class*="shadow-xs"] {
+  box-shadow: var(--app-shadow-soft) !important;
+}
+
+[class*="shadow-lg"],
+[class*="shadow-xl"] {
+  box-shadow: var(--app-shadow) !important;
+}
+
+header,
+[class*="fixed"][class*="border-b"] {
+  backdrop-filter: blur(18px);
+  background-color: color-mix(in srgb, var(--app-surface) 92%, transparent) !important;
+}
+
+main > div,
+main section,
+table,
+thead,
+tbody {
+  transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
+}
+
+input,
+select,
+textarea {
+  background-color: var(--app-surface) !important;
+  border-color: var(--app-border) !important;
+  color: var(--app-text) !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--app-faint) !important;
+}
+
+:root[data-theme="dark"] [class*="hover:bg-[#f8fafc]"]:hover,
+:root[data-theme="dark"] [class*="hover:bg-[#f1f5f9]"]:hover {
+  background-color: #1e293b !important;
+}
+
+:root[data-theme="dark"] [class*="bg-[#ecfdf5]"],
+:root[data-theme="dark"] [class*="bg-[#f0fdf4]"],
+:root[data-theme="dark"] [class*="bg-[#dcfce7]"],
+:root[data-theme="dark"] [class*="bg-[#e8f5e9]"] {
+  background-color: rgba(34, 197, 94, 0.12) !important;
+}
+
+:root[data-theme="dark"] [class*="text-[#15803d]"],
+:root[data-theme="dark"] [class*="text-[#16a34a]"] {
+  color: #4ade80 !important;
+}
+
+:root[data-theme="dark"] [class*="bg-[#fff5f5]"],
+:root[data-theme="dark"] [class*="bg-[#fef2f2]"],
+:root[data-theme="dark"] [class*="bg-[#fff7ed]"] {
+  background-color: var(--app-danger-soft) !important;
+}
+
+:root[data-theme="dark"] [class*="text-[#c53030]"],
+:root[data-theme="dark"] [class*="text-[#9b2c2c]"],
+:root[data-theme="dark"] [class*="text-[#991b1b]"] {
+  color: #fca5a5 !important;
+}
+
+:root[data-theme="dark"] tr:hover {
+  background-color: rgba(30, 41, 59, 0.7) !important;
+}
